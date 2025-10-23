@@ -25,6 +25,7 @@ function game() {
     drawLeaves();
     playerMovement();
     drawPlayer();
+    drawScore();
     requestAnimationFrame(game);
 }
 
@@ -74,19 +75,41 @@ function drawLeaves() {
 }
 
 function updateLeaves() {
-    for (let i = 0; i < leaves.length; i++) {
-        leaves[i].y += leaves[i].speed;
-    }
+    for (let i = leaves.length - 1; i >= 0; i--) {
+        const leaf = leaves[i];
+        leaf.y += leaf.speed;
 
-    for (let i = leaves.length - 1; i >= 0; i --) {
-        if (leaves[i].y > canvas.height) {
-            leaves.splice(i, 1);
+        if (isLeafCaught(leaf)) {
+        score++;
+        leaves.splice(i, 1);
+        continue;
+        }
+
+        if (leaf.y > canvas.height) {
+        leaves.splice(i, 1);
         }
     }
 
     if (Math.random() < 0.03) {
         createLeaf();
     }
+}
+
+let score = 0;
+
+function isLeafCaught(leaf) {
+  return (
+    leaf.x < player.x + player.width &&
+    leaf.x + leaf.size > player.x &&
+    leaf.y < player.y + player.height &&
+    leaf.y + leaf.size > player.y
+  )
+}
+
+function drawScore() {
+  ctx.font = "24px Arial";
+  ctx.fillStyle = "#8B4513";
+  ctx.fillText("Score: " + score, 20, 40)
 }
 
 game();
