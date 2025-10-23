@@ -10,6 +10,7 @@ const player = {
     width: 150,
     height: 150,
     image: new Image(),
+    speed: 5,
 }
 
 player.image.src = "images/player.png";
@@ -20,9 +21,9 @@ function drawPlayer() {
 }
 
 function game() {
+    playerMovement();
     drawPlayer();
     requestAnimationFrame(game);
-    console.log(keys);
 }
 
 const keys = {
@@ -39,5 +40,15 @@ document.addEventListener("keyup", (event) => {
     if (event.key === "ArrowLeft") keys.left = false;
     if (event.key === "ArrowRight") keys.right = false;
 })
+
+function playerMovement() {
+    if (keys.left && player.x > 0) {
+        player.x -= player.speed;
+    }
+
+    if (keys.right && player.x + player.width < canvas.width) {
+        player.x += player.speed;
+    }
+}
 
 game();
