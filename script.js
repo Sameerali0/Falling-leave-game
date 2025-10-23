@@ -22,6 +22,22 @@ function drawPlayer() {
 function game() {
     drawPlayer();
     requestAnimationFrame(game);
+    console.log(keys);
 }
+
+const keys = {
+    left: false,
+    right: false,
+}
+
+document.addEventListener("keydown", (event) => {
+    if (event.key === "ArrowLeft") keys.left = true;
+    if (event.key === "ArrowRight") keys.right = true;
+})
+
+document.addEventListener("keyup", (event) => {
+    if (event.key === "ArrowLeft") keys.left = false;
+    if (event.key === "ArrowRight") keys.right = false;
+})
 
 game();
