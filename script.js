@@ -20,6 +20,10 @@ function drawPlayer() {
 }
 
 function game() {
+    if (gameOver) {
+      drawGameOver();
+      return;
+    }
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     updateLeaves();
     drawLeaves();
@@ -65,7 +69,7 @@ function createLeaf() {
   const y = - size;
   const speed = 2 + Math.random() * 2;
 
-  const types = ["green", "red"]
+  const types = ["green", "red", "black"]
   const type = types[Math.floor(Math.random() * types.length)]
 
   let image = new Image();
@@ -73,6 +77,8 @@ function createLeaf() {
     image.src = "images/greenLeaf.png";
   } else if (type === "red"){
     image.src = "images/redLeaf.png";
+  } else if (type === "black") {
+    image.src = "images/blackLeaf.png"
   }
 
   leaves.push({ x, y, size, speed, type, image})
@@ -95,6 +101,8 @@ function updateLeaves() {
             score += 1;
           } else if (leaf.type === "red") {
             score -= 1;
+          } else if (leaf.type === "black") {
+            gameOver = true;
           }
         leaves.splice(i, 1);
         continue;
@@ -132,6 +140,15 @@ function drawScore() {
   ctx.font = "24px Arial";
   ctx.fillStyle = "#8B4513";
   ctx.fillText("Score: " + score, 20, 40)
+}
+
+let gameOver = false;
+
+function drawGameOver() {
+  ctx.font = "48px Arial"
+  ctx.fillStyle = "red"
+  ctx.textAlign = "center"
+  ctx.fillText("Game Over!", canvas.width / 2, canvas.height / 2)
 }
 
 game();
