@@ -50,10 +50,18 @@ function createLeaf() {
   const y = - size;
   const speed = 2 + Math.random() * 2;
 
-  const types = ["green", "red", "black"]
-  const type = types[Math.floor(Math.random() * types.length)]
+  const random = Math.random()
+  let type;
 
-  let image = new Image();
+  if (random < 0.7) {
+    type = "green"
+  } else if (random < 0.9) {
+    type = "red";
+  } else {
+    type = "black"
+  }
+
+  const image = new Image();
   if (type === "green") {
     image.src = "images/greenLeaf.png";
   } else if (type === "red"){
