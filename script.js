@@ -15,23 +15,9 @@ const player = {
 
 player.image.src = "images/player.png";
 
-function drawPlayer() {
-    ctx.drawImage(player.image, player.x, player.y, player.width, player.height)
-}
-
-function game() {
-    if (gameOver) {
-      drawGameOver();
-      return;
-    }
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    updateLeaves();
-    drawLeaves();
-    playerMovement();
-    drawPlayer();
-    drawScore();
-    requestAnimationFrame(game);
-}
+const leaves = [];
+let score = 0;
+let gameOver = false;
 
 const keys = {
     left: false,
@@ -58,11 +44,6 @@ function playerMovement() {
     }
 }
 
-const leaves = [];
-
-const leafImage = new Image();
-leafImage.src = "images/greenLeaf.png";
-
 function createLeaf() {
   const size = 40 + Math.random() * 20;
   const x = Math.random() * (canvas.width -size)
@@ -82,6 +63,10 @@ function createLeaf() {
   }
 
   leaves.push({ x, y, size, speed, type, image})
+}
+
+function drawPlayer() {
+    ctx.drawImage(player.image, player.x, player.y, player.width, player.height)
 }
 
 function drawLeaves() {
@@ -118,8 +103,6 @@ function updateLeaves() {
     }
 }
 
-let score = 0;
-
 function isLeafCaught(leaf) {
   const playerTop = player.y
   const playerBottom = player.y + player.height
@@ -142,13 +125,28 @@ function drawScore() {
   ctx.fillText("Score: " + score, 20, 40)
 }
 
-let gameOver = false;
-
 function drawGameOver() {
   ctx.font = "48px Arial"
   ctx.fillStyle = "red"
   ctx.textAlign = "center"
   ctx.fillText("Game Over!", canvas.width / 2, canvas.height / 2)
 }
+
+function game() {
+    if (gameOver) {
+      drawGameOver();
+      return;
+    }
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    updateLeaves();
+    drawLeaves();
+    playerMovement();
+    drawPlayer();
+    drawScore();
+    requestAnimationFrame(game);
+}
+
+const leafImage = new Image();
+leafImage.src = "images/greenLeaf.png";
 
 game();
