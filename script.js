@@ -64,13 +64,24 @@ function createLeaf() {
   const x = Math.random() * (canvas.width -size)
   const y = - size;
   const speed = 2 + Math.random() * 2;
-  leaves.push({ x, y, size, speed})
+
+  const types = ["green", "red"]
+  const type = types[Math.floor(Math.random() * types.length)]
+
+  let image = new Image();
+  if (type === "green") {
+    image.src = "images/greenLeaf.png";
+  } else if (type === "red"){
+    image.src = "images/redLeaf.png";
+  }
+
+  leaves.push({ x, y, size, speed, type, image})
 }
 
 function drawLeaves() {
   for (let i = 0; i < leaves.length; i++) {
     const leaf = leaves[i];
-    ctx.drawImage(leafImage, leaf.x, leaf.y, leaf.size, leaf.size)
+    ctx.drawImage(leaf.image, leaf.x, leaf.y, leaf.size, leaf.size)
   }
 }
 
@@ -80,7 +91,11 @@ function updateLeaves() {
         leaf.y += leaf.speed;
 
         if (isLeafCaught(leaf)) {
-        score++;
+          if (leaf.type === "green") {
+            score += 1;
+          } else if (leaf.type === "red") {
+            score -= 1;
+          }
         leaves.splice(i, 1);
         continue;
         }
