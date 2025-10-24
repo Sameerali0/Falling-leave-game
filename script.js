@@ -113,12 +113,19 @@ function updateLeaves() {
 let score = 0;
 
 function isLeafCaught(leaf) {
-  return (
-    leaf.x < player.x + player.width &&
-    leaf.x + leaf.size > player.x &&
-    leaf.y < player.y + player.height &&
-    leaf.y + leaf.size > player.y
-  )
+  const playerTop = player.y
+  const playerBottom = player.y + player.height
+  const playerLeft = player.x
+  const playerRight = player.x + player.width;
+
+  const leafBottom = leaf.y + leaf.size
+  const leafLeft = leaf.x;
+  const leafRight = leaf.x + leaf.size
+
+  const horizontallyAligned = leafRight > playerLeft + 20 && leafLeft < playerRight - 20;
+  const verticallyAligned = leafBottom > playerTop + 10 && leafBottom < playerTop + 40
+
+  return horizontallyAligned && verticallyAligned;
 }
 
 function drawScore() {
