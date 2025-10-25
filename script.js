@@ -46,9 +46,10 @@ function playerMovement() {
 
 function createLeaf() {
   const size = 40 + Math.random() * 20;
-  const x = Math.random() * (canvas.width -size)
+  const x = Math.random() * (canvas.width - size - 10) + 5;
   const y = - size;
   const speed = 2 + Math.random() * 2;
+  const sway = 0.5 + Math.random() * 0.5;
 
   const random = Math.random()
   let type;
@@ -74,7 +75,7 @@ function createLeaf() {
     image.src = "images/blackLeaf.png"
   }
 
-  leaves.push({ x, y, size, speed, type, image})
+  leaves.push({ x, y, size, speed, type, image, sway, swayDir: Math.random() < 0.5 ? 1 : -1})
 }
 
 function drawPlayer() {
@@ -92,6 +93,10 @@ function updateLeaves() {
     for (let i = leaves.length - 1; i >= 0; i--) {
         const leaf = leaves[i];
         leaf.y += leaf.speed;
+        leaf.x += Math.sin(leaf.y * 0.03) * leaf.sway;
+        
+        if (leaf.x < 0) leaf.x = 0;
+        if (leaf.x + leaf.size > canvas.width) leaf.x = canvas.width - leaf.size;
 
         if (isLeafCaught(leaf)) {
           if (leaf.type === "green") {
