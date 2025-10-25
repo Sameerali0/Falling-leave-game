@@ -4,6 +4,7 @@ const startScreen = document.getElementById("start-screen")
 const startBtn = document.getElementById("start-btn")
 const gameContainer = document.getElementById("game-container")
 const gameOverScreen = document.getElementById("game-over")
+const finalScore = document.getElementById("final-score")
 
 canvas.width = 800;
 canvas.height = 560;
@@ -181,6 +182,7 @@ startBtn.addEventListener("click", () => {
 
 function showGameOver() {
   gameOverScreen.style.display ="flex"
+  finalScore.textContent = "Final Score: " + score;
   gameContainer.style.display = "none"
 }
 
