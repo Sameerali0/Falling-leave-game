@@ -5,6 +5,7 @@ const startBtn = document.getElementById("start-btn")
 const gameContainer = document.getElementById("game-container")
 const gameOverScreen = document.getElementById("game-over")
 const finalScore = document.getElementById("final-score")
+const highScoreDisplay = document.getElementById("high-score")
 const restartBtn = document.getElementById("restart-btn")
 
 canvas.width = 800;
@@ -24,6 +25,10 @@ player.image.src = "images/player.png";
 const leaves = [];
 let score = 0;
 let gameOver = false;
+
+let highScore = localStorage.getItem("highScore")
+                ? parseInt(localStorage.getItem("highScore"))
+                : 0;
 
 const keys = {
     left: false,
@@ -148,6 +153,7 @@ function drawScore() {
   ctx.font = "24px Arial";
   ctx.fillStyle = "#8B4513";
   ctx.fillText("Score: " + score, 20, 40)
+  ctx.fillText("High Score: " + highScore, 620, 40);
 }
 
 function drawGameOver() {
@@ -183,8 +189,14 @@ startBtn.addEventListener("click", () => {
 })
 
 function showGameOver() {
+  if (score > highScore) {
+    highScore = score;
+    localStorage.setItem("highScore", highScore);
+  }
+
   gameOverScreen.style.display ="flex"
-  finalScore.textContent = "Final Score: " + score;
+  finalScore.textContent = `Final Score: ${score}`
+  highScoreDisplay.textContent = `High Score: ${highScore}`;
   gameContainer.style.display = "none"
 }
 
