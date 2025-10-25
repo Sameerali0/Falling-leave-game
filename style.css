@@ -5,19 +5,39 @@
 }
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: "Poppins", Arial, sans-serif;
   background: linear-gradient(#ffe6b3, #ffd9b3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.game-wrapper {
+  text-align: center; 
+}
+
+.game-title {
+  font-size: 36px;
+  color: #8b4513;
+  text-shadow: 2px 2px #ffdd99;
+  margin-bottom: 20px;
 }
 
 .game-container {
   width: 800px;
-  margin: 40px auto;
-  border-radius: 8px;
+  border: 4px solid #d2a679;
+  border-radius: 12px;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
   overflow: hidden;
+  background: #f5e6cc;
 }
 
 canvas {
   display: block;
+  width: 100%;
+  height: 560px;
   background: #f5e6cc;
 }
