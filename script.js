@@ -53,10 +53,12 @@ function createLeaf() {
   const random = Math.random()
   let type;
 
-  if (random < 0.7) {
+  if (random < 0.65) {
     type = "green"
-  } else if (random < 0.9) {
+  } else if (random < 0.85) {
     type = "red";
+  } else if (random < 0.95) {
+    type = "yellow"
   } else {
     type = "black"
   }
@@ -66,6 +68,8 @@ function createLeaf() {
     image.src = "images/greenLeaf.png";
   } else if (type === "red"){
     image.src = "images/redLeaf.png";
+  } else if (type === "yellow") {
+    image.src = "images/yellowLeaf.png"
   } else if (type === "black") {
     image.src = "images/blackLeaf.png"
   }
@@ -94,6 +98,8 @@ function updateLeaves() {
             score += 1;
           } else if (leaf.type === "red") {
             score -= 1;
+          } else if (leaf.type === "yellow") {
+            score += Math.floor(2 + Math.random() * 2)
           } else if (leaf.type === "black") {
             gameOver = true;
           }
