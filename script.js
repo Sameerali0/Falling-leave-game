@@ -5,6 +5,7 @@ const startBtn = document.getElementById("start-btn")
 const gameContainer = document.getElementById("game-container")
 const gameOverScreen = document.getElementById("game-over")
 const finalScore = document.getElementById("final-score")
+const restartBtn = document.getElementById("restart-btn")
 
 canvas.width = 800;
 canvas.height = 560;
@@ -192,3 +193,8 @@ drawGameOver = function () {
   originalDrawGameOver();
   showGameOver();
 }
+
+restartBtn.addEventListener("click", () => {
+  gameOverScreen.style.display = "none"
+  startScreen.style.display = "flex"
+})
