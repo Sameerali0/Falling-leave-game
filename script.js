@@ -1,5 +1,9 @@
 const canvas = document.getElementById("game-canvas");
 const ctx = canvas.getContext("2d");
+const startScreen = document.getElementById("start-screen")
+const startBtn = document.getElementById("start-btn")
+const gameContainer = document.getElementById("game-container")
+const gameOverScreen = document.getElementById("game-over")
 
 canvas.width = 800;
 canvas.height = 560;
@@ -165,7 +169,24 @@ function game() {
     requestAnimationFrame(game);
 }
 
-const leafImage = new Image();
-leafImage.src = "images/greenLeaf.png";
+startBtn.addEventListener("click", () => {
+    startScreen.style.display = "none"
+    gameContainer.style.display = "block"
+    gameOverScreen.style.display = "none"
+    score = 0;
+    gameOver = false;
+    leaves.length = 0;
+    game();
+})
 
-game();
+function showGameOver() {
+  gameOverScreen.style.display ="flex"
+  gameContainer.style.display = "none"
+}
+
+const originalDrawGameOver = drawGameOver;
+
+drawGameOver = function () {
+  originalDrawGameOver();
+  showGameOver();
+}
