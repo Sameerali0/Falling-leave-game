@@ -178,6 +178,7 @@ startBtn.addEventListener("click", () => {
     score = 0;
     gameOver = false;
     leaves.length = 0;
+    ctx.textAlign = "left";
     game();
 })
 
