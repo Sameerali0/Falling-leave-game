@@ -84,8 +84,14 @@ button:hover {
 }
 
 .instructions {
-  color: #6b3e2e;
-  font-size: 16px;
+  color: #5a2e0f;
+  font-size: 18px;
+  background: rgba(255, 245, 230, 0.8);
+  padding: 15px 20px;
+  border-radius: 10px;
+  border: 2px solid #d2a679;
+  max-width: 400px;
+  line-height: 1.5;
 }
 
 .mute-btn {
