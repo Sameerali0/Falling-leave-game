@@ -11,6 +11,7 @@ const restartBtn = document.getElementById("restart-btn")
 const catchSound = new Audio("sounds/catch.mp3")
 const gameOverSound = new Audio("sounds/gameover.mp3")
 const bonusSound = new Audio("sounds/bonus.mp3")
+const doubleBonusSound = new Audio("sounds/doublebonus.mp3")
 const wrongSound = new Audio("sounds/wrong.mp3")
 const bgMusic = new Audio("sounds/background.mp3")
 bgMusic.loop = true;
@@ -151,8 +152,8 @@ function updateLeaves() {
             bonusSound.play();
           } else if (leaf.type === "rainbow") {
             score += 5;
-            bonusSound.currentTime = 0;
-            bonusSound.play();
+            doubleBonusSound.currentTime = 0;
+            doubleBonusSound.play();
           } else if (leaf.type === "black") {
             gameOver = true;
             gameOverSound.currentTime = 0;
