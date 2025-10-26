@@ -9,6 +9,8 @@ const highScoreDisplay = document.getElementById("high-score")
 const restartBtn = document.getElementById("restart-btn")
 
 const catchSound = new Audio("sounds/catch.mp3")
+const gameOverSound = new Audio("sounds/gameover.mp3")
+
 
 canvas.width = 800;
 canvas.height = 560;
@@ -122,6 +124,8 @@ function updateLeaves() {
             score += Math.floor(2 + Math.random() * 2)
           } else if (leaf.type === "black") {
             gameOver = true;
+            gameOverSound.currentTime = 0;
+            gameOverSound.play();
           }
         leaves.splice(i, 1);
         continue;
