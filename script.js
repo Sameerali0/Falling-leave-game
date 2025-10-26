@@ -89,16 +89,16 @@ function createLeaf() {
   const random = Math.random()
   let type;
 
-  if (random < 0.65) {
+  if (random < 0.6) {
     type = "green"
-  } else if (random < 0.85) {
+  } else if (random < 0.8) {
     type = "red";
-  } else if (random < 0.95) {
-    type = "yellow"
-  } else if (random < 0.98) {
-    type = "rainbow";
-  } else {
+  } else if (random < 0.9) {
     type = "black"
+  } else if (random < 0.975) {
+    type = "yellow";
+  } else {
+    type = "rainbow"
   }
 
   const image = new Image();
