@@ -191,7 +191,7 @@ function isLeafCaught(leaf) {
 
 function drawScore() {
   ctx.font = "24px Arial";
-  ctx.fillStyle = "#8B4513";
+  ctx.fillStyle = "#4a2c0a";
   ctx.fillText("Score: " + score, 20, 40)
   ctx.fillText("High Score: " + highScore, 620, 40);
 }
