@@ -11,6 +11,7 @@ const restartBtn = document.getElementById("restart-btn")
 const catchSound = new Audio("sounds/catch.mp3")
 const gameOverSound = new Audio("sounds/gameover.mp3")
 const bonusSound = new Audio("sounds/bonus.mp3")
+const wrongSound = new Audio("sounds/wrong.mp3")
 
 canvas.width = 800;
 canvas.height = 560;
@@ -120,6 +121,8 @@ function updateLeaves() {
             catchSound.play();
           } else if (leaf.type === "red") {
             score -= 1;
+            wrongSound.currentTime = 0;
+            wrongSound.play();
           } else if (leaf.type === "yellow") {
             score += Math.floor(2 + Math.random() * 2)
             bonusSound.currentTime = 0;
