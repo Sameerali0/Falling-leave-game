@@ -94,6 +94,8 @@ function createLeaf() {
     type = "red";
   } else if (random < 0.95) {
     type = "yellow"
+  } else if (random < 0.98) {
+    type = "rainbow";
   } else {
     type = "black"
   }
@@ -105,6 +107,8 @@ function createLeaf() {
     image.src = "images/redLeaf.png";
   } else if (type === "yellow") {
     image.src = "images/yellowLeaf.png"
+  } else if (type === "rainbow") {
+    image.src = "images/rainbowLeaf.png";
   } else if (type === "black") {
     image.src = "images/blackLeaf.png"
   }
@@ -143,6 +147,10 @@ function updateLeaves() {
             wrongSound.play();
           } else if (leaf.type === "yellow") {
             score += Math.floor(2 + Math.random() * 2)
+            bonusSound.currentTime = 0;
+            bonusSound.play();
+          } else if (leaf.type === "rainbow") {
+            score += 5;
             bonusSound.currentTime = 0;
             bonusSound.play();
           } else if (leaf.type === "black") {
