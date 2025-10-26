@@ -12,6 +12,24 @@ const catchSound = new Audio("sounds/catch.mp3")
 const gameOverSound = new Audio("sounds/gameover.mp3")
 const bonusSound = new Audio("sounds/bonus.mp3")
 const wrongSound = new Audio("sounds/wrong.mp3")
+const bgMusic = new Audio("sounds/background.mp3")
+bgMusic.loop = true;
+bgMusic.volume = 0.5;
+
+const muteBtn = document.getElementById("mute-btn");
+let isMuted = false;
+
+muteBtn.addEventListener("click", () => {
+  isMuted = !isMuted;
+  bgMusic.muted = isMuted;
+
+  if (isMuted) {
+    muteBtn.innerHTML = `<i class="fa-solid fa-volume-xmark"></i> off`
+  } else {
+    muteBtn.innerHTML = `<i class="fa-solid fa-volume-high"></i> on`;
+  }
+});
+
 
 canvas.width = 800;
 canvas.height = 560;
@@ -199,6 +217,8 @@ startBtn.addEventListener("click", () => {
     leaves.length = 0;
     ctx.textAlign = "left";
     game();
+    bgMusic.currentTime = 0;
+    bgMusic.play();
 })
 
 function showGameOver() {
@@ -211,6 +231,7 @@ function showGameOver() {
   finalScore.textContent = `Final Score: ${score}`
   highScoreDisplay.textContent = `High Score: ${highScore}`;
   gameContainer.style.display = "none"
+  bgMusic.pause();
 }
 
 const originalDrawGameOver = drawGameOver;
