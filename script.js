@@ -190,10 +190,13 @@ function isLeafCaught(leaf) {
 }
 
 function drawScore() {
-  ctx.font = "24px Arial";
+  ctx.font = "24px Poppins, Arial";
+  ctx.shadowColor = "rgba(0, 0, 0, 0.6)";
+  ctx.shadowBlur = 6;
   ctx.fillStyle = "#4a2c0a";
   ctx.fillText("Score: " + score, 20, 40)
   ctx.fillText("High Score: " + highScore, 620, 40);
+  ctx.shadowBlur = 0;
 }
 
 function drawGameOver() {

@@ -21,10 +21,11 @@ body {
 }
 
 .game-title {
-  font-size: 36px;
-  color: #8b4513;
-  text-shadow: 2px 2px #ffdd99;
-  margin-bottom: 20px;
+  font-size: 40px;
+  color: #fff8e7;
+  text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.6), 0 0 15px #ffb347;
+  margin-bottom: 18px;
+  letter-spacing: 2px;
 }
 
 .game-container {
@@ -71,16 +72,25 @@ button:hover {
 .game-over h2{
   font-size: 42px;
   color: red;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
 }
 
 #final-score {
-  font-size: 20px;
-  color: #8b4513;
+  font-size: 22px;
+  color: #fff8dc;
+  background: rgba(207, 175, 68, 0.85);
+  padding: 5px 20px;
+  border-radius: 40px;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.6);
 }
 
 #high-score {
-  font-size: 20px;
-  color: #8b4513;
+  font-size: 22px;
+  color: #fff8dc;
+  background: rgba(207, 175, 68, 0.85);
+  padding: 5px 20px;
+  border-radius: 30px;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.6);
 }
 
 .instructions {
