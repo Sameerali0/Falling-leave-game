@@ -8,6 +8,8 @@ const finalScore = document.getElementById("final-score")
 const highScoreDisplay = document.getElementById("high-score")
 const restartBtn = document.getElementById("restart-btn")
 
+const catchSound = new Audio("sounds/catch.mp3")
+
 canvas.width = 800;
 canvas.height = 560;
 
@@ -112,6 +114,8 @@ function updateLeaves() {
         if (isLeafCaught(leaf)) {
           if (leaf.type === "green") {
             score += 1;
+            catchSound.currentTime = 0;
+            catchSound.play();
           } else if (leaf.type === "red") {
             score -= 1;
           } else if (leaf.type === "yellow") {
