@@ -78,7 +78,7 @@ button:hover {
 #final-score {
   font-size: 22px;
   color: #fff8dc;
-  background: rgba(207, 175, 68, 0.85);
+  background: rgba(110, 146, 43, 0.959);
   padding: 5px 20px;
   border-radius: 40px;
   text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.6);
@@ -87,7 +87,7 @@ button:hover {
 #high-score {
   font-size: 22px;
   color: #fff8dc;
-  background: rgba(207, 175, 68, 0.85);
+  background: rgba(110, 146, 43, 0.959);
   padding: 5px 20px;
   border-radius: 30px;
   text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.6);
@@ -136,4 +136,9 @@ button:hover {
 
 .mute-btn:hover i {
   color: #8b4513;
+}
+
+.buttons {
+  display: flex;
+  gap: 25px;
 }

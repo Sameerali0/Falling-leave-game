@@ -255,5 +255,23 @@ drawGameOver = function () {
 
 restartBtn.addEventListener("click", () => {
   gameOverScreen.style.display = "none"
+  startScreen.style.display = "none"
+  gameContainer.style.display = "block";
+  
+  score = 0;
+  gameOver = false;
+  leaves.length = 0;
+  ctx.textAlign = "left"
+
+  bgMusic.currentTime = 0
+  bgMusic.play();
+  game();
+})
+
+const homeBtn = document.getElementById("home-btn")
+
+homeBtn.addEventListener("click", () => {
+  gameOverScreen.style.display = "none"
+  gameContainer.style.display = "none"
   startScreen.style.display = "flex"
 })
